@@ -90,6 +90,28 @@ Hackloi AI Cyber Lab is built around local execution:
 
 Grab the latest Debian package from the [GitHub Releases page](https://github.com/kely26/offline-ai-lab/releases/latest). The packaged app is aimed at Kali, Debian, Ubuntu, and similar Linux desktops.
 
+## Screenshots And Branding
+
+For people deciding whether to install, the project now includes clear visuals directly in the repo:
+
+<p align="center">
+  <img src="branding/logos/logo-primary.png" alt="Hackloi AI Cyber Lab primary logo" width="70%">
+</p>
+
+<p align="center">
+  <img src="branding/linkedin/linkedin-hero.png" alt="Hackloi AI Cyber Lab showcase hero" width="100%">
+</p>
+
+<p align="center">
+  <img src="branding/splash/splash-screen.png" alt="Hackloi AI Cyber Lab splash screen" width="49%">
+  <img src="branding/landing/landing-page.png" alt="Hackloi AI Cyber Lab landing page" width="49%">
+</p>
+
+<p align="center">
+  <img src="branding/box-art/product-box.png" alt="Hackloi AI Cyber Lab product art" width="49%">
+  <img src="branding/demo/github-demo.gif" alt="Hackloi AI Cyber Lab animated preview" width="49%">
+</p>
+
 ### Install Desktop Prerequisites
 
 ```bash
