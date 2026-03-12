@@ -64,6 +64,10 @@ The product combines:
   <img src="docs/screenshots/captures/product-tour.gif" alt="Hackloi AI Cyber Lab product tour" width="100%">
 </p>
 
+<p align="center">
+  <a href="branding/demo/product-walkthrough.mp4">Download the full walkthrough video (MP4)</a>
+</p>
+
 ## Real App Screenshots
 
 <p align="center">

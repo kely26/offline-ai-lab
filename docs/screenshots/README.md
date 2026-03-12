@@ -20,6 +20,9 @@ Current tracked captures:
 - [`captures/agents-page.png`](captures/agents-page.png)
 - [`captures/model-manager.png`](captures/model-manager.png)
 - [`captures/product-tour.gif`](captures/product-tour.gif)
+- [`../../branding/demo/product-walkthrough.mp4`](../../branding/demo/product-walkthrough.mp4)
+
+The GIF is the GitHub-friendly preview. The MP4 is the higher-quality walkthrough for release and download pages.
 
 ## Clean Capture Setup
 
