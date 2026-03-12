@@ -20,12 +20,12 @@ Proudly built in Tanzania with a focus on privacy, local AI, and practical cyber
 
 Upload these images in this order for the best LinkedIn presentation:
 
-1. [linkedin-hero.png](/home/hackloi/Videos/pentesting/offline-ai-lab/branding/linkedin/linkedin-hero.png)
-2. [linkedin-carousel-01-intro.png](/home/hackloi/Videos/pentesting/offline-ai-lab/branding/linkedin/linkedin-carousel-01-intro.png)
-3. [linkedin-carousel-02-features.png](/home/hackloi/Videos/pentesting/offline-ai-lab/branding/linkedin/linkedin-carousel-02-features.png)
-4. [linkedin-carousel-03-local-privacy.png](/home/hackloi/Videos/pentesting/offline-ai-lab/branding/linkedin/linkedin-carousel-03-local-privacy.png)
-5. [linkedin-carousel-04-built-in-tanzania.png](/home/hackloi/Videos/pentesting/offline-ai-lab/branding/linkedin/linkedin-carousel-04-built-in-tanzania.png)
-6. [linkedin-contact-card.png](/home/hackloi/Videos/pentesting/offline-ai-lab/branding/linkedin/linkedin-contact-card.png)
+1. [linkedin-hero.png](../branding/linkedin/linkedin-hero.png)
+2. [linkedin-carousel-01-intro.png](../branding/linkedin/linkedin-carousel-01-intro.png)
+3. [linkedin-carousel-02-features.png](../branding/linkedin/linkedin-carousel-02-features.png)
+4. [linkedin-carousel-03-local-privacy.png](../branding/linkedin/linkedin-carousel-03-local-privacy.png)
+5. [linkedin-carousel-04-built-in-tanzania.png](../branding/linkedin/linkedin-carousel-04-built-in-tanzania.png)
+6. [linkedin-contact-card.png](../branding/linkedin/linkedin-contact-card.png)
 
 If you later capture live product screenshots, add them after the hero image and before the final contact card.
 

@@ -16,7 +16,7 @@ Recommended filenames:
 Before capturing screenshots:
 
 1. Launch the app with local Ollama running.
-2. Use the files in [`../../demo-data/`](/home/hackloi/Videos/pentesting/offline-ai-lab/demo-data) so the UI looks populated and consistent.
+2. Use the files in [`../../demo-data/`](../../demo-data/) so the UI looks populated and consistent.
 3. Keep the window close to its default desktop size.
 4. Use a clean session with readable content and no error toasts visible.
 5. Make sure the top bar still shows `Hackloi AI Cyber Lab` and the visible version.

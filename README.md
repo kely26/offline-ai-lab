@@ -77,17 +77,15 @@ sudo apt update
 sudo apt install -y libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev
 ```
 
-Install project dependencies:
+From the repository root, install project dependencies:
 
 ```bash
-cd /home/hackloi/Videos/pentesting/offline-ai-lab
 npm install
 ```
 
 Install Ollama and recommended starter models if needed:
 
 ```bash
-cd /home/hackloi/Videos/pentesting/offline-ai-lab
 ./setup-local-ai.sh --profile fast
 ollama pull phi4-mini
 ollama pull qwen2.5-coder:7b
@@ -97,34 +95,33 @@ ollama pull deepseek-coder:6.7b
 Run the desktop app in development mode:
 
 ```bash
-cd /home/hackloi/Videos/pentesting/offline-ai-lab
 npm run tauri:dev
 ```
 
 ## Quick Demo
 
-Use the files in [`demo-data/`](/home/hackloi/Videos/pentesting/offline-ai-lab/demo-data) for a clean product demo.
+Use the files in [`demo-data/`](demo-data/) for a clean product demo.
 
 1. Open Hackloi AI Cyber Lab and start on `Dashboard`.
-2. Open `Chat` and ask the Coding Agent to explain [`demo-data/sample-script.py`](/home/hackloi/Videos/pentesting/offline-ai-lab/demo-data/sample-script.py).
+2. Open `Chat` and ask the Coding Agent to explain [`demo-data/sample-script.py`](demo-data/sample-script.py).
 3. Open `Code Workspace`, import the `demo-data` folder, and show editing the sample script.
-4. Open `Scan Analyzer`, paste [`demo-data/sample-scan.txt`](/home/hackloi/Videos/pentesting/offline-ai-lab/demo-data/sample-scan.txt), and run `Analyze locally`.
+4. Open `Scan Analyzer`, paste [`demo-data/sample-scan.txt`](demo-data/sample-scan.txt), and run `Analyze locally`.
 5. Show the structured findings and then run the Analysis Agent on the same scan.
 6. Open `Agents` and show model assignments and the Coordinator workflow.
 7. Open `Models` and show the currently selected local model and recommendations.
 
 ## Demo Data
 
-The demo assets are stored in [`demo-data/`](/home/hackloi/Videos/pentesting/offline-ai-lab/demo-data):
+The demo assets are stored in [`demo-data/`](demo-data/):
 
-- [`sample-script.py`](/home/hackloi/Videos/pentesting/offline-ai-lab/demo-data/sample-script.py)
-- [`sample-terminal-output.log`](/home/hackloi/Videos/pentesting/offline-ai-lab/demo-data/sample-terminal-output.log)
-- [`sample-scan.txt`](/home/hackloi/Videos/pentesting/offline-ai-lab/demo-data/sample-scan.txt)
-- [`sample-config.json`](/home/hackloi/Videos/pentesting/offline-ai-lab/demo-data/sample-config.json)
+- [`sample-script.py`](demo-data/sample-script.py)
+- [`sample-terminal-output.log`](demo-data/sample-terminal-output.log)
+- [`sample-scan.txt`](demo-data/sample-scan.txt)
+- [`sample-config.json`](demo-data/sample-config.json)
 
 ## Screenshots
 
-Screenshot capture notes live in [`docs/screenshots/README.md`](/home/hackloi/Videos/pentesting/offline-ai-lab/docs/screenshots/README.md).
+Screenshot capture notes live in [`docs/screenshots/README.md`](docs/screenshots/README.md).
 
 Recommended screenshot set:
 
@@ -140,7 +137,6 @@ Recommended screenshot set:
 Run the desktop app in development mode:
 
 ```bash
-cd /home/hackloi/Videos/pentesting/offline-ai-lab
 npm run tauri:dev
 ```
 
@@ -155,7 +151,6 @@ What development mode does:
 Build the desktop package:
 
 ```bash
-cd /home/hackloi/Videos/pentesting/offline-ai-lab
 npm run tauri:build
 ```
 
@@ -167,11 +162,11 @@ src-tauri/target/release/bundle/deb/Hackloi AI Cyber Lab_0.1.0_amd64.deb
 
 ## Product Presentation Assets
 
-Additional release and marketing copy lives in [`docs/`](/home/hackloi/Videos/pentesting/offline-ai-lab/docs):
+Additional release and marketing copy lives in [`docs/`](docs/):
 
-- [`docs/landing-page-copy.md`](/home/hackloi/Videos/pentesting/offline-ai-lab/docs/landing-page-copy.md)
-- [`docs/release-description.md`](/home/hackloi/Videos/pentesting/offline-ai-lab/docs/release-description.md)
-- [`docs/release-checklist.md`](/home/hackloi/Videos/pentesting/offline-ai-lab/docs/release-checklist.md)
+- [`docs/landing-page-copy.md`](docs/landing-page-copy.md)
+- [`docs/release-description.md`](docs/release-description.md)
+- [`docs/release-checklist.md`](docs/release-checklist.md)
 
 ## Repository Structure
 

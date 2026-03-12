@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 status_line() {
   printf '%-28s %s\n' "$1" "$2"
 }
@@ -42,4 +44,4 @@ echo
 echo "Recommended install commands on Kali/Debian:"
 echo "  sudo apt update"
 echo "  sudo apt install -y libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev"
-echo "  cd /home/hackloi/Videos/pentesting/offline-ai-lab && npm install"
+echo "  cd \"$REPO_ROOT\" && npm install"
