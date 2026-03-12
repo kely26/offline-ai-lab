@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 560" fill="none">
+  <defs>
+    <filter id="g" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g transform="translate(250 280)">
+    <circle r="150" stroke="#00a8ff" stroke-width="18" opacity="0.95"/>
+    <circle r="108" stroke="#00ffd1" stroke-width="12"/>
+    <rect x="-52" y="-52" width="104" height="104" rx="18" stroke="#00ffd1" stroke-width="10"/>
+    <path d="M-76 0H-138M76 0H138M0-76V-138M0 76V138" stroke="#00ffd1" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="-138" cy="0" r="10" fill="#00a8ff"/>
+    <circle cx="138" cy="0" r="10" fill="#00a8ff"/>
+    <circle cx="0" cy="-138" r="10" fill="#00a8ff"/>
+    <circle cx="0" cy="138" r="10" fill="#00a8ff"/>
+    <path d="M116 -56C70 -133 -43 -164 -120 -66C-160 -16 -163 78 -43 138C36 177 139 112 143 43" stroke="#00ffd1" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" filter="url(#g)"/>
+    <path d="M-68 -135L-24 -178L-4 -128" stroke="#00a8ff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" filter="url(#g)"/>
+    <path d="M104 -46L165 -12L111 12L74 -8" stroke="#00a8ff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" filter="url(#g)"/>
+    <path d="M-24 -25L-121 -10L-55 38" stroke="#00a8ff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" filter="url(#g)"/>
+    <path d="M112 40L164 80L122 115" stroke="#00a8ff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" filter="url(#g)"/>
+    <circle cx="98" cy="-21" r="8" fill="#ff3b81"/>
+  </g>
+  <text x="470" y="226" fill="#e6edf3" font-size="112" font-weight="700" font-family="DejaVu Sans, Arial, sans-serif">Hackloi</text>
+  <text x="930" y="226" fill="#00ffd1" font-size="56" font-weight="700" font-family="DejaVu Sans Mono, monospace">AI CYBER LAB</text>
+  <text x="470" y="332" fill="#9bb0c3" font-size="34" font-family="DejaVu Sans, Arial, sans-serif">Your Local AI Cybersecurity Workstation</text>
+  <rect x="470" y="370" width="640" height="10" rx="5" fill="#00a8ff"/>
+</svg>

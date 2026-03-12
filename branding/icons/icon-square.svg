@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="108" fill="#0b0f14"/>
+  <circle cx="256" cy="256" r="156" stroke="#00a8ff" stroke-width="24"/>
+  <circle cx="256" cy="256" r="112" stroke="#00ffd1" stroke-width="16"/>
+  <rect x="202" y="202" width="108" height="108" rx="22" stroke="#00ffd1" stroke-width="14"/>
+  <path d="M177 256H120M335 256H392M256 177V120M256 335V392" stroke="#00ffd1" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="120" cy="256" r="12" fill="#00a8ff"/>
+  <circle cx="392" cy="256" r="12" fill="#00a8ff"/>
+  <circle cx="256" cy="120" r="12" fill="#00a8ff"/>
+  <circle cx="256" cy="392" r="12" fill="#00a8ff"/>
+  <path d="M377 197C328 108 202 89 132 183C88 241 96 342 188 393C275 442 391 377 393 284" stroke="#00ffd1" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M165 128L220 88L240 146" stroke="#00a8ff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M350 202L411 232L351 259L315 236" stroke="#00a8ff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M225 226L117 242L189 293" stroke="#00a8ff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M360 296L414 336L374 371" stroke="#00a8ff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="344" cy="234" r="10" fill="#ff3b81"/>
+</svg>

@@ -1,0 +1,14 @@
+{
+  "workspace": "demo-lab",
+  "profile": "local-only",
+  "active_model": "hackloi-assistant",
+  "targets": [
+    "alpha.internal",
+    "beta.internal",
+    "gamma.internal"
+  ],
+  "notes": {
+    "owner": "Hackloi Demo",
+    "purpose": "Safe local demonstration data"
+  }
+}

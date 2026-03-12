@@ -1,0 +1,6 @@
+[INFO] Starting local review job
+[INFO] Loading configuration from sample-config.json
+[INFO] Workspace imported successfully
+[WARN] Target beta.internal returned HTTP 403
+[INFO] Scan notes saved locally
+[INFO] Job completed without external network upload

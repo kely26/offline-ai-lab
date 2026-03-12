@@ -1,0 +1,998 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hackloi AI Cyber Lab</title>
+    <link rel="icon" href="/assets/brand-icon.svg">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div id="startup-splash" class="startup-splash">
+      <img src="/assets/startup-splash.png" alt="Hackloi AI Cyber Lab splash screen" class="startup-splash-image">
+    </div>
+    <div class="desktop-frame">
+      <aside class="desktop-sidebar">
+        <div class="sidebar-brand">
+          <img src="/assets/logo-primary.svg" alt="Hackloi AI Cyber Lab" class="brand-wordmark">
+          <p class="eyebrow">Your Local AI Cybersecurity Workstation</p>
+          <p class="sidebar-copy">Local AI, multi-agent workflows, scan analysis, and cyber tooling in one neon desktop lab.</p>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Primary">
+          <button class="nav-item" data-view="dashboard" type="button">Dashboard</button>
+          <button class="nav-item is-active" data-view="chat" type="button">Chat</button>
+          <button class="nav-item" data-view="workspace" type="button">Code Workspace</button>
+          <button class="nav-item" data-view="models" type="button">Models</button>
+          <button class="nav-item" data-view="agents" type="button">Agents</button>
+          <button class="nav-item" data-view="tools" type="button">Tools</button>
+          <button class="nav-item" data-view="scan" type="button">Scan Analyzer</button>
+          <button class="nav-item" data-view="ctf" type="button">CTF Helper</button>
+          <button class="nav-item" data-view="terminal" type="button">Terminal</button>
+          <button class="nav-item" data-view="settings" type="button">Settings</button>
+          <button class="nav-item" data-view="about" type="button">About</button>
+        </nav>
+
+        <section class="sidebar-status panel compact-panel">
+          <div class="panel-head">
+            <h2>Desktop State</h2>
+            <span id="health-pill" class="pill pill-offline">Checking</span>
+          </div>
+          <div class="mini-metrics">
+            <div>
+              <span>Ollama</span>
+              <strong id="ollama-status">Unknown</strong>
+            </div>
+            <div>
+              <span>Models</span>
+              <strong id="model-count">0</strong>
+            </div>
+            <div>
+              <span>Mode</span>
+              <strong id="runtime-mode">Browser</strong>
+            </div>
+          </div>
+          <div id="sidebar-monitoring" class="monitor-grid compact-monitor-grid"></div>
+        </section>
+      </aside>
+
+      <div class="desktop-workspace">
+        <header class="topbar">
+          <div class="topbar-brand">
+            <img src="/assets/brand-icon.svg" alt="" aria-hidden="true" class="topbar-mark">
+            <div>
+            <p class="eyebrow">Cybersecurity Workstation</p>
+            <h2>Hackloi AI Cyber Lab</h2>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <span id="api-origin" class="topbar-chip">API: local</span>
+            <span id="local-only-chip" class="topbar-chip">Local Only</span>
+            <span id="active-mode-chip" class="topbar-chip">Mode: Standard</span>
+            <span id="app-version-chip" class="topbar-chip">Version: 0.1.0</span>
+            <button id="refresh-all" class="ghost-button" type="button">Refresh</button>
+          </div>
+        </header>
+
+        <main class="view-stack">
+          <section class="view-panel" data-view-panel="dashboard">
+            <div class="hero-panel">
+              <div>
+                <p class="eyebrow">Operations Overview</p>
+                <h3>Local Workstation Status</h3>
+                <p>Runtime health, active projects, loaded models, and recent command activity.</p>
+              </div>
+              <div class="hero-badges">
+                <span id="dashboard-runtime-chip" class="hero-chip">Runtime: local</span>
+                <span id="dashboard-ollama-chip" class="hero-chip">Ollama: pending</span>
+                <span id="dashboard-project-chip" class="hero-chip">Project: Workspace</span>
+              </div>
+            </div>
+
+            <div class="dashboard-grid">
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>System Overview</h2>
+                  <span class="subtle-label">Lightweight local telemetry</span>
+                </div>
+                <div id="dashboard-metrics" class="dashboard-metric-grid"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Runtime Models</h2>
+                  <span class="subtle-label">Installed and currently loaded</span>
+                </div>
+                <div id="dashboard-runtime-models" class="dashboard-runtime-models"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Workspace Snapshot</h2>
+                  <span class="subtle-label">Current local project state</span>
+                </div>
+                <div id="dashboard-workspace-summary" class="runtime-info"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Recent Jobs</h2>
+                  <span class="subtle-label">Most recent tool activity</span>
+                </div>
+                <div id="dashboard-job-list" class="dashboard-job-list"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Quick Actions</h2>
+                  <span class="subtle-label">Jump directly into the workflow</span>
+                </div>
+                <div class="template-grid compact-template-grid">
+                  <button class="template-card template-button dashboard-link-button" data-dashboard-view="chat" type="button">
+                    <strong>Open Chat</strong>
+                    <span>Talk to the active local model with files and streaming output.</span>
+                  </button>
+                  <button class="template-card template-button dashboard-link-button" data-dashboard-view="workspace" type="button">
+                    <strong>Open Workspace</strong>
+                    <span>Edit the current project, search files, and run code actions.</span>
+                  </button>
+                  <button class="template-card template-button dashboard-link-button" data-dashboard-view="tools" type="button">
+                    <strong>Launch Tooling</strong>
+                    <span>Review command previews, run jobs, and capture local output.</span>
+                  </button>
+                  <button class="template-card template-button dashboard-link-button" data-dashboard-view="scan" type="button">
+                    <strong>Analyze Output</strong>
+                    <span>Parse scans locally and hand them off to chat when needed.</span>
+                  </button>
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <section class="view-panel is-visible" data-view-panel="chat">
+            <div class="hero-panel">
+              <div>
+                <p class="eyebrow">Welcome Panel</p>
+                <h3>Welcome Hackloi</h3>
+                <p>Your AI Cyber Lab is Ready</p>
+              </div>
+              <div class="hero-badges">
+                <span class="hero-chip">Local AI</span>
+                <span class="hero-chip">Linux Desktop</span>
+                <span id="hero-mode-chip" class="hero-chip">Standard Mode</span>
+                <span id="hero-default-model" class="hero-chip">Default: pending</span>
+              </div>
+            </div>
+
+            <div class="chat-layout">
+              <section id="chat-dropzone" class="panel chat-column dropzone">
+                <div class="panel-head">
+                  <h2>Chat Console</h2>
+                  <span id="active-model-label" class="subtle-label">Model: pending</span>
+                </div>
+                <div class="chat-meta-row">
+                  <span id="active-mode-label" class="subtle-label">Mode: Standard</span>
+                  <span id="default-model-label" class="subtle-label">Default: pending</span>
+                </div>
+                <div id="chat-feed" class="chat-feed"></div>
+                <form id="composer" class="composer">
+                  <div class="field">
+                    <div class="composer-label-row">
+                      <span>Your prompt</span>
+                      <span id="chat-stream-status" class="subtle-label">Ready · Ctrl/Cmd + Enter to send</span>
+                    </div>
+                    <textarea id="prompt-input" rows="5" placeholder="Ask Hackloi AI to write code, analyze output, or explain a script"></textarea>
+                  </div>
+                  <div class="attachment-toolbar">
+                    <label class="ghost-button file-button">
+                      <input id="chat-file-input" type="file" multiple accept=".txt,.log,.py,.sh,.js,.json,.md,.csv,.xml,.yaml,.yml,.html,.conf,.ini">
+                      Attach files
+                    </label>
+                    <span class="subtle-label">Drop text, log, code, or scan files here</span>
+                  </div>
+                  <div id="chat-attachment-list" class="attachment-list"></div>
+                  <div class="composer-actions">
+                    <button id="send-button" class="primary-button" type="submit">Send</button>
+                    <button id="stop-generation" class="ghost-button" type="button">Stop</button>
+                    <button id="regenerate-response" class="ghost-button" type="button">Regenerate</button>
+                    <button id="clear-chat" class="ghost-button" type="button">Clear chat</button>
+                    <button id="new-session" class="ghost-button" type="button">New session</button>
+                  </div>
+                </form>
+              </section>
+
+              <aside class="chat-side-column">
+                <section class="panel compact-panel">
+                  <div class="panel-head">
+                    <h2>Live Status</h2>
+                  </div>
+                  <div class="status-cards">
+                    <div class="status-card">
+                      <span>Bind</span>
+                      <strong>127.0.0.1</strong>
+                    </div>
+                    <div class="status-card">
+                      <span>Desktop</span>
+                      <strong id="desktop-mode-copy">Web</strong>
+                    </div>
+                    <div class="status-card">
+                      <span>Sessions</span>
+                      <strong id="session-count">1</strong>
+                    </div>
+                  </div>
+                  <div id="hero-monitor-grid" class="monitor-grid"></div>
+                </section>
+
+                <section class="panel compact-panel">
+                  <div class="panel-head">
+                    <h2>Agent Router</h2>
+                    <span id="chat-agent-route" class="subtle-label">Route: Auto</span>
+                  </div>
+                  <label class="field">
+                    <span>Chat agent</span>
+                    <select id="chat-agent-select"></select>
+                  </label>
+                  <div class="composer-actions">
+                    <button id="chat-compare-agents" class="ghost-button" type="button">Compare Agents</button>
+                    <button id="chat-summarize-thread" class="ghost-button" type="button">Summarize Thread</button>
+                  </div>
+                  <div id="chat-agent-status" class="scan-note">Use Auto (Coordinator) or route the next chat request to a specific local agent.</div>
+                </section>
+
+                <section class="panel compact-panel">
+                  <div class="panel-head">
+                    <h2>Assistant Mode</h2>
+                    <span class="subtle-label">Prompt overlay</span>
+                  </div>
+                  <label class="field">
+                    <span>Mode</span>
+                    <select id="assistant-mode-select"></select>
+                  </label>
+                  <div id="assistant-mode-description" class="scan-note"></div>
+                </section>
+
+                <section class="panel compact-panel">
+                  <div class="panel-head">
+                    <h2>Quick Presets</h2>
+                  </div>
+                  <div class="preset-list">
+                    <button class="preset-button" data-preset="You are Hackloi AI, a cybersecurity assistant running inside a Kali Linux lab. Welcome the user with &quot;Welcome Hackloi&quot;. Help with Linux, cybersecurity learning, programming tasks, and offline workflows.">Cyber lab guide</button>
+                    <button class="preset-button" data-preset="You are Hackloi AI Coder. Welcome the user with &quot;Welcome Hackloi&quot;. Focus on shell commands, Python, JavaScript, debugging, and automation on Kali Linux.">Code + shell</button>
+                    <button class="preset-button" data-preset="You are a patient Kali Linux coach. Welcome the user with &quot;Welcome Hackloi&quot;. Explain tools carefully and assume no internet access.">Offline learning</button>
+                  </div>
+                </section>
+
+                <section class="panel compact-panel">
+                  <div class="panel-head">
+                    <h2>Agent Views</h2>
+                    <span class="subtle-label">Specialized outputs</span>
+                  </div>
+                  <div id="chat-agent-tabs" class="agent-tab-bar empty-state">No agent responses yet.</div>
+                  <div id="chat-agent-summary" class="scan-note">Run a chat request or compare agents to inspect specialized responses.</div>
+                  <div id="chat-agent-response" class="assistant-output empty-state">No agent output yet.</div>
+                </section>
+
+                <section class="panel compact-panel">
+                  <div class="panel-head">
+                    <h2>Prompt History</h2>
+                    <span class="subtle-label">Recent typed prompts</span>
+                  </div>
+                  <div id="prompt-history-list" class="prompt-history-list"></div>
+                </section>
+              </aside>
+            </div>
+          </section>
+
+          <section class="view-panel" data-view-panel="workspace">
+            <div class="panel panel-spaced">
+              <div class="panel-head">
+                <h2>Code Workspace</h2>
+                <span class="subtle-label">Local workspace import, edit, and AI-assisted code actions</span>
+              </div>
+              <div class="code-workspace-layout">
+                <aside class="panel compact-panel explorer-panel">
+                  <div class="panel-head">
+                    <h3>Explorer</h3>
+                    <span id="workspace-summary" class="subtle-label">No workspace loaded</span>
+                  </div>
+                  <div class="workspace-actions">
+                    <button id="workspace-new-file" class="ghost-button" type="button">New file</button>
+                    <button id="workspace-new-folder" class="ghost-button" type="button">New folder</button>
+                    <button id="workspace-rename-path" class="ghost-button" type="button">Rename</button>
+                    <button id="workspace-delete-path" class="ghost-button" type="button">Delete</button>
+                    <label class="ghost-button file-button">
+                      <input id="workspace-file-input" type="file" multiple accept=".txt,.log,.py,.sh,.js,.json,.md,.csv,.xml,.yaml,.yml,.html,.conf,.ini">
+                      Import files
+                    </label>
+                    <label class="ghost-button file-button">
+                      <input id="workspace-folder-input" type="file" multiple webkitdirectory directory>
+                      Open project folder
+                    </label>
+                  </div>
+                  <label class="field tight-field">
+                    <span>Filter files</span>
+                    <input id="workspace-filter" type="text" placeholder="Filter file names or paths">
+                  </label>
+                  <div id="workspace-import-status" class="scan-note">Import a file or local folder to start editing in the workspace.</div>
+                  <div id="workspace-selection" class="scan-note">Selection: none</div>
+                  <div id="workspace-tree" class="workspace-tree empty-state">No files in the workspace yet.</div>
+                </aside>
+
+                <section class="panel panel-spaced editor-panel">
+                  <div class="panel-head">
+                    <div>
+                      <h3 id="editor-current-file">Untitled</h3>
+                      <p id="editor-language" class="subtle-label">markdown</p>
+                    </div>
+                    <div class="composer-actions">
+                      <button id="workspace-format-file" class="ghost-button" type="button">Format</button>
+                      <button id="workspace-find" class="ghost-button" type="button">Search</button>
+                      <button id="workspace-replace" class="ghost-button" type="button">Replace</button>
+                      <button id="workspace-send-to-chat" class="ghost-button" type="button">Send To Chat</button>
+                      <button id="workspace-save-file" class="primary-button" type="button">Save</button>
+                      <button id="workspace-save-as-file" class="ghost-button" type="button">Save As</button>
+                    </div>
+                  </div>
+                  <div id="workspace-tab-bar" class="workspace-tab-bar"></div>
+                  <div id="workspace-file-state" class="scan-note">No file open. Import or create a file to start editing.</div>
+                  <div id="editor-empty-state" class="empty-state">Open a file or import a local project folder to start working in the editor.</div>
+                  <div id="editor-surface" class="editor-surface"></div>
+                </section>
+
+                <aside class="panel panel-spaced code-assistant-panel">
+                  <div class="panel-head">
+                    <h3>Code Assistant</h3>
+                    <span class="subtle-label">Uses your current local model</span>
+                  </div>
+                  <label class="field">
+                    <span>Workspace agent</span>
+                    <select id="workspace-agent-select"></select>
+                  </label>
+                  <div class="composer-actions">
+                    <button id="workspace-compare-agents" class="ghost-button" type="button">Compare Agents</button>
+                    <button id="workspace-generate-notes" class="ghost-button" type="button">Generate Notes</button>
+                  </div>
+                  <div class="template-grid compact-template-grid">
+                    <button class="template-card template-button code-action-button" data-code-action="explain" type="button">
+                      <strong>Explain code</strong>
+                      <span>Summarize purpose, flow, and risky parts.</span>
+                    </button>
+                    <button class="template-card template-button code-action-button" data-code-action="improve" type="button">
+                      <strong>Improve code</strong>
+                      <span>Suggest a cleaner version while keeping intent.</span>
+                    </button>
+                    <button class="template-card template-button code-action-button" data-code-action="debug" type="button">
+                      <strong>Debug code</strong>
+                      <span>Identify likely bugs and fixes.</span>
+                    </button>
+                    <button class="template-card template-button code-action-button" data-code-action="refactor" type="button">
+                      <strong>Refactor code</strong>
+                      <span>Restructure for clarity and maintainability.</span>
+                    </button>
+                    <button class="template-card template-button code-action-button" data-code-action="generate" type="button">
+                      <strong>Generate script</strong>
+                      <span>Turn a short spec into a local script draft.</span>
+                    </button>
+                    <button class="template-card template-button code-action-button" data-code-action="convert" type="button">
+                      <strong>Convert language</strong>
+                      <span>Rewrite code into another local scripting language.</span>
+                    </button>
+                  </div>
+                  <div id="code-assistant-status" class="scan-note">Open a file in the editor, then run an AI coding action.</div>
+                  <div id="workspace-agent-tabs" class="agent-tab-bar empty-state">No agent responses yet.</div>
+                  <div id="workspace-agent-summary" class="scan-note">Use Coding Agent for file work, Documentation Agent for notes, or compare multiple perspectives.</div>
+                  <div class="composer-actions">
+                    <button id="code-assistant-open-output" class="ghost-button" type="button">Open Output In Editor</button>
+                    <button id="code-assistant-apply-output" class="ghost-button" type="button">Apply Output To Editor</button>
+                  </div>
+                  <div id="code-assistant-output" class="assistant-output empty-state">Code assistant output will appear here.</div>
+                </aside>
+              </div>
+            </div>
+          </section>
+
+          <section class="view-panel" data-view-panel="models">
+            <div id="model-setup-wizard" class="panel panel-spaced">
+              <div class="panel-head">
+                <h2>Model Setup Wizard</h2>
+                <span class="subtle-label">Beginner-friendly local model guidance</span>
+              </div>
+              <div id="model-setup-status" class="scan-note">Checking installed local models and recommended profiles.</div>
+              <div id="model-setup-summary" class="dashboard-metric-grid"></div>
+              <div id="model-setup-guide" class="recommendation-grid"></div>
+            </div>
+
+            <div class="panel panel-spaced">
+              <div class="panel-head">
+                <h2>Model Manager</h2>
+                <button id="refresh-models" class="ghost-button" type="button">Refresh models</button>
+              </div>
+              <div class="model-toolbar">
+                <label class="field inline-field">
+                  <span>Active model</span>
+                  <select id="model-select"></select>
+                </label>
+                <label class="field inline-field">
+                  <span>Default model</span>
+                  <select id="default-model-select"></select>
+                </label>
+                <div class="status-cards">
+                  <div class="status-card">
+                    <span>Preferred</span>
+                    <strong>hackloi-assistant</strong>
+                  </div>
+                  <div class="status-card">
+                    <span>Loaded</span>
+                    <strong id="loaded-model-copy">Waiting</strong>
+                  </div>
+                  <div class="status-card">
+                    <span>Assistant Mode</span>
+                    <strong id="models-mode-copy">Standard</strong>
+                  </div>
+                </div>
+              </div>
+              <div id="models-status" class="scan-note">Selecting a model changes the next local request. No background download or cloud routing occurs.</div>
+              <div id="model-grid" class="model-grid"></div>
+            </div>
+
+            <div class="panel panel-spaced">
+              <div class="panel-head">
+                <h2>Loaded Runtime Models</h2>
+                <span class="subtle-label">What Ollama currently has in memory</span>
+              </div>
+              <div id="model-runtime-grid" class="recommendation-grid"></div>
+            </div>
+
+            <div class="panel panel-spaced">
+              <div class="panel-head">
+                <h2>Recommended Models</h2>
+                <span class="subtle-label">Copy exact pull commands</span>
+              </div>
+              <div id="model-recommendations" class="recommendation-grid"></div>
+            </div>
+          </section>
+
+          <section class="view-panel" data-view-panel="agents">
+            <div class="hero-panel">
+              <div>
+                <p class="eyebrow">Multi-Agent Workstation</p>
+                <h3>Agent Manager</h3>
+                <p>Route requests to specialized local agents while keeping every action explicit and user-controlled.</p>
+              </div>
+              <div class="hero-badges">
+                <span class="hero-chip">Local Agents</span>
+                <span class="hero-chip">Manual Routing</span>
+                <span class="hero-chip">Coordinator</span>
+                <span class="hero-chip">No Hidden Execution</span>
+              </div>
+            </div>
+
+            <div class="dashboard-grid">
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Agent Defaults</h2>
+                  <span class="subtle-label">User-controlled routing</span>
+                </div>
+                <label class="field inline-field">
+                  <span>Default agent</span>
+                  <select id="agents-default-select"></select>
+                </label>
+                <label class="checkbox-row">
+                  <input id="agents-compare-mode" type="checkbox">
+                  <span>Enable compare mode by default when requested from supported pages.</span>
+                </label>
+                <div id="agents-manager-status" class="scan-note">Agents remain local, explicit, and model-driven through Ollama.</div>
+                <div id="agents-summary" class="dashboard-metric-grid"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Workflow Templates</h2>
+                  <span class="subtle-label">Start agent flows quickly</span>
+                </div>
+                <div id="agent-workflow-templates" class="template-grid"></div>
+              </section>
+            </div>
+
+            <section class="panel panel-spaced">
+              <div class="panel-head">
+                <h2>Built-In Agents</h2>
+                <span class="subtle-label">Specialized local assistants</span>
+              </div>
+              <div id="agent-grid" class="agent-grid"></div>
+            </section>
+          </section>
+
+          <section class="view-panel" data-view-panel="tools">
+            <div class="tools-layout">
+              <div class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Cyber Tooling</h2>
+                  <span class="subtle-label">Detected on this machine</span>
+                </div>
+                <div id="tool-list" class="tool-grid"></div>
+              </div>
+
+              <div class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Tool Launcher</h2>
+                  <span class="subtle-label">Visible commands, explicit confirmation</span>
+                </div>
+                <div id="launcher-template-list" class="template-grid"></div>
+                <label class="field">
+                  <span>Command</span>
+                  <textarea id="launcher-command" rows="3" placeholder="nmap -sV target.com -oN scan.txt"></textarea>
+                </label>
+                <div id="launcher-command-preview" class="scan-note">Command preview will appear here.</div>
+                <div class="launcher-meta">
+                  <span>Workdir: <strong id="launcher-workdir">~/.local/share/hackloi-ai</strong></span>
+                  <span>Allowlist: nmap, ffuf, httpx, subfinder, nikto, whois, dig</span>
+                </div>
+                <label class="checkbox-row">
+                  <input id="launcher-confirm" type="checkbox">
+                  <span>I confirm this exact command should be launched locally.</span>
+                </label>
+                <div class="composer-actions">
+                  <button id="run-tool-command" class="primary-button" type="button">Run Command</button>
+                  <button id="clear-tool-command" class="ghost-button" type="button">Clear</button>
+                </div>
+                <div id="launcher-status" class="scan-note">Command execution stays local. Hidden execution is disabled.</div>
+                <div class="job-layout">
+                  <section>
+                    <div class="panel-head">
+                      <h3>Job History</h3>
+                    </div>
+                    <div id="tool-job-list" class="job-list"></div>
+                  </section>
+                  <section>
+                    <div class="panel-head">
+                      <h3>Job Output</h3>
+                    </div>
+                    <div id="tool-job-detail" class="job-detail empty-state">No job selected yet.</div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="view-panel" data-view-panel="scan">
+            <div id="scan-dropzone" class="panel panel-spaced dropzone">
+              <div class="panel-head">
+                <h2>Scan Analyzer</h2>
+                <span class="subtle-label">Paste output and route it into chat</span>
+              </div>
+              <div id="scan-preset-list" class="template-grid"></div>
+              <div id="scan-preset-note" class="scan-note"></div>
+              <div class="attachment-toolbar">
+                <label class="ghost-button file-button">
+                  <input id="scan-file-input" type="file" multiple accept=".txt,.log,.json,.xml,.csv,.out,.scan,.py,.sh,.js,.md">
+                  Attach scan files
+                </label>
+                <span class="subtle-label">Drop scan logs or text output here</span>
+              </div>
+              <div id="scan-attachment-list" class="attachment-list"></div>
+              <label class="field">
+                <span>Scan or command output</span>
+                <textarea id="scan-input" rows="14" placeholder="Paste nmap, ffuf, httpx, or other local output here..."></textarea>
+              </label>
+              <div class="composer-actions">
+                <button id="preview-scan" class="ghost-button" type="button">Analyze locally</button>
+                <button id="analyze-scan" class="primary-button" type="button">Send to chat</button>
+                <button id="clear-scan" class="ghost-button" type="button">Clear</button>
+              </div>
+              <div id="scan-analysis-status" class="scan-note">Run a local structured parse to extract services, likely issues, and next steps.</div>
+              <div id="scan-analysis-summary" class="empty-state">No structured analysis yet.</div>
+              <div id="scan-analysis-grid" class="structured-grid"></div>
+              <div class="panel-head nested-panel-head">
+                <h3>Agent Review</h3>
+                <span id="scan-agent-route" class="subtle-label">Route: Analysis Agent</span>
+              </div>
+              <label class="field">
+                <span>Scan agent</span>
+                <select id="scan-agent-select"></select>
+              </label>
+              <div class="composer-actions">
+                <button id="scan-run-agent" class="ghost-button" type="button">Run Selected Agent</button>
+                <button id="scan-compare-agents" class="ghost-button" type="button">Compare Agents</button>
+                <button id="scan-generate-notes" class="ghost-button" type="button">Generate Notes</button>
+              </div>
+              <div id="scan-agent-status" class="scan-note">Run Analysis Agent or Documentation Agent on the current scan context. Tool actions remain explicit.</div>
+              <div id="scan-agent-tabs" class="agent-tab-bar empty-state">No agent responses yet.</div>
+              <div id="scan-agent-summary" class="scan-note">Generate structured reviews and markdown notes from the current analyzer context.</div>
+              <div id="scan-agent-response" class="assistant-output empty-state">No agent output yet.</div>
+            </div>
+          </section>
+
+          <section class="view-panel" data-view-panel="ctf">
+            <div class="panel panel-spaced">
+              <div class="panel-head">
+                <h2>CTF Helper</h2>
+                <span class="subtle-label">Prompt templates and quick notes</span>
+              </div>
+              <div class="ctf-layout">
+                <aside id="ctf-tab-list" class="ctf-tabs"></aside>
+                <section class="ctf-body">
+                  <div id="ctf-card-grid" class="template-grid"></div>
+                  <label class="field">
+                    <span>Notes</span>
+                    <textarea id="ctf-notes" rows="10" placeholder="Keep lightweight challenge notes here..."></textarea>
+                  </label>
+                  <div class="composer-actions">
+                    <button id="save-ctf-notes" class="ghost-button" type="button">Save Notes</button>
+                    <button id="send-ctf-prompt" class="primary-button" type="button">Send Active Prompt</button>
+                  </div>
+                  <div id="ctf-note-status" class="scan-note">Notes are stored locally in the desktop app.</div>
+                </section>
+              </div>
+            </div>
+          </section>
+
+          <section class="view-panel" data-view-panel="terminal">
+            <div class="panel panel-spaced">
+              <div class="panel-head">
+                <h2>Terminal Deck</h2>
+                <span class="subtle-label">Copy-friendly local commands</span>
+              </div>
+              <div id="command-deck" class="command-deck"></div>
+              <div class="scan-note">The terminal workflow remains copy-first. Use the launcher on the Tools page when you want explicit local execution.</div>
+            </div>
+          </section>
+
+          <section class="view-panel" data-view-panel="settings">
+            <div class="settings-overview-grid">
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>General</h2>
+                </div>
+                <div id="settings-general-summary" class="runtime-info"></div>
+                <div class="vault-actions">
+                  <button id="settings-open-welcome" class="ghost-button" type="button">Open Welcome Guide</button>
+                </div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Models</h2>
+                </div>
+                <div id="settings-models-summary" class="runtime-info"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Privacy</h2>
+                </div>
+                <div id="settings-privacy-summary" class="runtime-info"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Developer</h2>
+                </div>
+                <div id="settings-developer-summary" class="runtime-info"></div>
+              </section>
+            </div>
+
+            <div class="settings-grid">
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Assistant</h2>
+                </div>
+                <label class="field">
+                  <span>System prompt</span>
+                  <textarea id="system-prompt" rows="10" data-setting-field="assistant.system_prompt">You are Hackloi AI, a cybersecurity assistant running inside a Kali Linux lab. Welcome the user with "Welcome Hackloi". Help with Linux, cybersecurity learning, programming tasks, and offline workflows.</textarea>
+                </label>
+                <div class="field-error" data-setting-error="assistant.system_prompt"></div>
+                <label class="field">
+                  <span>Default model</span>
+                  <select id="settings-default-model" data-setting-field="assistant.default_model"></select>
+                </label>
+                <div class="field-error" data-setting-error="assistant.default_model"></div>
+                <label class="field">
+                  <span>Assistant mode</span>
+                  <select id="settings-assistant-mode" data-setting-field="assistant.mode"></select>
+                </label>
+                <div class="field-error" data-setting-error="assistant.mode"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>UI</h2>
+                </div>
+                <label class="field">
+                  <span>Visual intensity</span>
+                  <select id="settings-visual-intensity" data-setting-field="ui.visual_intensity">
+                    <option value="normal">Normal</option>
+                    <option value="soft">Soft</option>
+                    <option value="high">High</option>
+                  </select>
+                </label>
+                <div class="field-error" data-setting-error="ui.visual_intensity"></div>
+                <label class="field">
+                  <span>Dashboard refresh interval (seconds)</span>
+                  <input id="settings-dashboard-refresh" type="number" min="5" max="300" step="1" data-setting-field="ui.dashboard_refresh_seconds">
+                </label>
+                <div class="field-error" data-setting-error="ui.dashboard_refresh_seconds"></div>
+                <label class="field">
+                  <span>Job refresh interval (seconds)</span>
+                  <input id="settings-job-refresh" type="number" min="2" max="60" step="1" data-setting-field="ui.job_refresh_seconds">
+                </label>
+                <div class="field-error" data-setting-error="ui.job_refresh_seconds"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Chat</h2>
+                </div>
+                <label class="field">
+                  <span>Prompt history limit</span>
+                  <input id="settings-prompt-history-limit" type="number" min="5" max="50" step="1" data-setting-field="chat.prompt_history_limit">
+                </label>
+                <div class="field-error" data-setting-error="chat.prompt_history_limit"></div>
+                <label class="field">
+                  <span>Attachment max count</span>
+                  <input id="settings-chat-attachment-max-count" type="number" min="1" max="50" step="1" data-setting-field="chat.attachment_max_count">
+                </label>
+                <div class="field-error" data-setting-error="chat.attachment_max_count"></div>
+                <label class="field">
+                  <span>Attachment max file size (bytes)</span>
+                  <input id="settings-chat-attachment-max-file-bytes" type="number" min="262144" max="10485760" step="1" data-setting-field="chat.attachment_max_file_bytes">
+                </label>
+                <div class="field-error" data-setting-error="chat.attachment_max_file_bytes"></div>
+                <label class="field">
+                  <span>Attachment max total size (bytes)</span>
+                  <input id="settings-chat-attachment-max-total-bytes" type="number" min="1048576" max="52428800" step="1" data-setting-field="chat.attachment_max_total_bytes">
+                </label>
+                <div class="field-error" data-setting-error="chat.attachment_max_total_bytes"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Workspace</h2>
+                </div>
+                <label class="field">
+                  <span>Import max files</span>
+                  <input id="settings-workspace-import-max-files" type="number" min="1" max="1000" step="1" data-setting-field="workspace.import_max_files">
+                </label>
+                <div class="field-error" data-setting-error="workspace.import_max_files"></div>
+                <label class="field">
+                  <span>Import max file size (bytes)</span>
+                  <input id="settings-workspace-import-max-file-bytes" type="number" min="262144" max="10485760" step="1" data-setting-field="workspace.import_max_file_bytes">
+                </label>
+                <div class="field-error" data-setting-error="workspace.import_max_file_bytes"></div>
+                <label class="field">
+                  <span>Import max total size (bytes)</span>
+                  <input id="settings-workspace-import-max-total-bytes" type="number" min="1048576" max="104857600" step="1" data-setting-field="workspace.import_max_total_bytes">
+                </label>
+                <div class="field-error" data-setting-error="workspace.import_max_total_bytes"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Analyzer &amp; CTF</h2>
+                </div>
+                <label class="field">
+                  <span>Default scan preset</span>
+                  <select id="settings-default-scan-preset" data-setting-field="analyzer.default_scan_preset">
+                    <option value="nmap">Nmap</option>
+                    <option value="ffuf">ffuf</option>
+                    <option value="httpx">httpx</option>
+                    <option value="nikto">Nikto</option>
+                    <option value="generic">Generic</option>
+                  </select>
+                </label>
+                <div class="field-error" data-setting-error="analyzer.default_scan_preset"></div>
+                <label class="field">
+                  <span>Default CTF category</span>
+                  <select id="settings-default-ctf-category" data-setting-field="ctf.default_category">
+                    <option value="crypto">Crypto</option>
+                    <option value="web">Web</option>
+                    <option value="reversing">Reversing</option>
+                    <option value="forensics">Forensics</option>
+                  </select>
+                </label>
+                <div class="field-error" data-setting-error="ctf.default_category"></div>
+                <label class="field">
+                  <span>Crypto notes</span>
+                  <textarea id="settings-ctf-notes-crypto" rows="4" data-setting-field="ctf.notes.crypto"></textarea>
+                </label>
+                <div class="field-error" data-setting-error="ctf.notes.crypto"></div>
+                <label class="field">
+                  <span>Web notes</span>
+                  <textarea id="settings-ctf-notes-web" rows="4" data-setting-field="ctf.notes.web"></textarea>
+                </label>
+                <div class="field-error" data-setting-error="ctf.notes.web"></div>
+                <label class="field">
+                  <span>Reversing notes</span>
+                  <textarea id="settings-ctf-notes-reversing" rows="4" data-setting-field="ctf.notes.reversing"></textarea>
+                </label>
+                <div class="field-error" data-setting-error="ctf.notes.reversing"></div>
+                <label class="field">
+                  <span>Forensics notes</span>
+                  <textarea id="settings-ctf-notes-forensics" rows="4" data-setting-field="ctf.notes.forensics"></textarea>
+                </label>
+                <div class="field-error" data-setting-error="ctf.notes.forensics"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Session Vault</h2>
+                </div>
+                <div class="vault-actions">
+                  <button id="export-session" class="ghost-button" type="button">Export session</button>
+                  <label class="ghost-button file-button">
+                    <input id="import-session" type="file" accept="application/json">
+                    Import session
+                  </label>
+                </div>
+                <div id="session-meta" class="session-meta"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Runtime Info</h2>
+                </div>
+                <div id="runtime-info" class="runtime-info"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Local Status</h2>
+                </div>
+                <div id="local-status" class="runtime-info"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Safety Guardrails</h2>
+                </div>
+                <div id="settings-safety-status" class="scan-note">These protections are enforced locally and cannot be changed from the UI.</div>
+                <div id="settings-safety-grid" class="runtime-info"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Settings Actions</h2>
+                </div>
+                <div id="settings-warning" class="scan-note">Settings load from a local config file and apply without any cloud dependency.</div>
+                <div id="settings-save-status" class="scan-note">No unsaved settings changes.</div>
+                <div class="vault-actions">
+                  <button id="settings-save-button" class="primary-button" type="button">Save changes</button>
+                  <button id="settings-reset-button" class="ghost-button" type="button">Reset to defaults</button>
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <section class="view-panel" data-view-panel="about">
+            <div class="hero-panel">
+              <div>
+                <p class="eyebrow">About This Build</p>
+                <h3>Hackloi AI Cyber Lab</h3>
+                <p id="about-description">Local AI cybersecurity workstation for chat, code, tools, and scan analysis.</p>
+              </div>
+              <div class="hero-badges">
+                <span id="about-version-chip" class="hero-chip">Version 0.1.0</span>
+                <span class="hero-chip">Local AI</span>
+                <span class="hero-chip">Desktop Ready</span>
+                <span class="hero-chip">No Cloud Routing</span>
+              </div>
+            </div>
+
+            <div class="about-grid">
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Application</h2>
+                </div>
+                <div id="about-identity" class="runtime-info"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>Local AI Workflow</h2>
+                </div>
+                <div id="about-local" class="runtime-info"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>System Info</h2>
+                </div>
+                <div id="about-system" class="runtime-info"></div>
+              </section>
+
+              <section class="panel panel-spaced">
+                <div class="panel-head">
+                  <h2>License &amp; Distribution</h2>
+                </div>
+                <div id="about-license" class="runtime-info"></div>
+              </section>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div id="toast-stack" class="toast-stack" aria-live="polite" aria-atomic="false"></div>
+
+    <div id="app-dialog" class="dialog-shell" hidden>
+      <div id="app-dialog-backdrop" class="dialog-backdrop"></div>
+      <section class="dialog-panel panel compact-panel" role="dialog" aria-modal="true" aria-labelledby="app-dialog-title">
+        <div class="panel-head">
+          <h2 id="app-dialog-title">Confirm Action</h2>
+          <button id="app-dialog-close" class="ghost-button dialog-close" type="button">Close</button>
+        </div>
+        <p id="app-dialog-description" class="dialog-copy">Confirm the next local action.</p>
+        <form id="app-dialog-form" class="dialog-form">
+          <label id="app-dialog-field" class="field" hidden>
+            <span id="app-dialog-label">Value</span>
+            <input id="app-dialog-input" type="text" autocomplete="off">
+          </label>
+          <div id="app-dialog-error" class="dialog-error" hidden></div>
+          <div class="composer-actions">
+            <button id="app-dialog-cancel" class="ghost-button" type="button">Cancel</button>
+            <button id="app-dialog-confirm" class="primary-button" type="submit">Confirm</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <div id="onboarding-overlay" class="onboarding-shell" hidden>
+      <div class="onboarding-backdrop"></div>
+      <section class="onboarding-panel panel panel-spaced" role="dialog" aria-modal="true" aria-labelledby="onboarding-title">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">First Run</p>
+            <h2 id="onboarding-title">Welcome to Hackloi AI Cyber Lab</h2>
+          </div>
+          <span id="onboarding-version" class="pill pill-default">Version 0.1.0</span>
+        </div>
+        <div class="onboarding-copy">
+          <p>This is a local AI cybersecurity workstation built for private desktop workflows.</p>
+          <ul>
+            <li>Models run locally with Ollama.</li>
+            <li>Nothing is sent to the cloud.</li>
+            <li>Cybersecurity tools run locally with explicit confirmation.</li>
+          </ul>
+        </div>
+        <div id="onboarding-model-status" class="scan-note">Checking local model availability.</div>
+        <div id="onboarding-model-list" class="recommendation-grid"></div>
+        <div class="composer-actions">
+          <button id="onboarding-get-started" class="primary-button" type="button">Get Started</button>
+          <button id="onboarding-configure-models" class="ghost-button" type="button">Configure Models</button>
+          <button id="onboarding-skip-setup" class="ghost-button" type="button">Skip Setup</button>
+        </div>
+      </section>
+    </div>
+
+    <template id="message-template">
+      <article class="message">
+        <header class="message-head">
+          <div class="message-head-main">
+            <span class="role-badge"></span>
+            <span class="message-time"></span>
+          </div>
+          <div class="message-actions">
+            <button class="ghost-button message-copy" type="button">Copy</button>
+            <button class="ghost-button message-regenerate" type="button">Regenerate</button>
+          </div>
+        </header>
+        <div class="message-body"></div>
+      </article>
+    </template>
+
+    <template id="command-card-template">
+      <article class="command-card">
+        <header class="command-card-head">
+          <div>
+            <h3></h3>
+            <p></p>
+          </div>
+          <button class="ghost-button copy-command" type="button">Copy</button>
+        </header>
+        <code></code>
+      </article>
+    </template>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

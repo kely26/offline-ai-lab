@@ -1,0 +1,12 @@
+Starting Nmap 7.95 at 2026-03-10 12:00 UTC
+Nmap scan report for demo.internal (10.10.10.25)
+Host is up (0.021s latency).
+Not shown: 997 filtered tcp ports (no-response)
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13
+80/tcp   open  http    nginx 1.24.0
+443/tcp  open  https   nginx 1.24.0
+
+Service Info: OS: Linux
+
+Nmap done: 1 IP address (1 host up) scanned in 11.42 seconds

@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Default desktop capability for Hackloi AI Cyber Lab",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

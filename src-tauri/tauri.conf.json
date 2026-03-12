@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Hackloi AI Cyber Lab",
+  "version": "0.1.0",
+  "identifier": "com.hackloi.cyberlab",
+  "build": {
+    "beforeDevCommand": "bash ./start-webui.sh",
+    "devUrl": "http://127.0.0.1:3000",
+    "frontendDist": "../webui"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Hackloi AI Cyber Lab",
+        "width": 1540,
+        "height": 980,
+        "minWidth": 1180,
+        "minHeight": 760,
+        "resizable": true,
+        "fullscreen": false,
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "deb"
+    ],
+    "resources": [
+      "../start-webui.sh",
+      "../start-ai.sh",
+      "../status.sh",
+      "../setup-local-ai.sh",
+      "../lib",
+      "../webui"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png"
+    ],
+    "linux": {
+      "deb": {
+        "depends": []
+      }
+    }
+  }
+}
