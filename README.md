@@ -61,7 +61,24 @@ The product combines:
 ## Demo Preview
 
 <p align="center">
-  <img src="branding/demo/github-demo.gif" alt="Hackloi AI Cyber Lab demo preview" width="100%">
+  <img src="docs/screenshots/captures/product-tour.gif" alt="Hackloi AI Cyber Lab product tour" width="100%">
+</p>
+
+## Real App Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/captures/dashboard-overview.png" alt="Hackloi AI Cyber Lab dashboard screenshot" width="49%">
+  <img src="docs/screenshots/captures/chat-panel.png" alt="Hackloi AI Cyber Lab chat screenshot" width="49%">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/captures/code-workspace.png" alt="Hackloi AI Cyber Lab code workspace screenshot" width="49%">
+  <img src="docs/screenshots/captures/scan-analyzer.png" alt="Hackloi AI Cyber Lab scan analyzer screenshot" width="49%">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/captures/model-manager.png" alt="Hackloi AI Cyber Lab model manager screenshot" width="49%">
+  <img src="docs/screenshots/captures/agents-page.png" alt="Hackloi AI Cyber Lab agents screenshot" width="49%">
 </p>
 
 ### Core Capabilities
@@ -90,9 +107,14 @@ Hackloi AI Cyber Lab is built around local execution:
 
 Grab the latest Debian package from the [GitHub Releases page](https://github.com/kely26/offline-ai-lab/releases/latest). The packaged app is aimed at Kali, Debian, Ubuntu, and similar Linux desktops.
 
-## Screenshots And Branding
+```bash
+wget https://github.com/kely26/offline-ai-lab/releases/download/v0.1.0/hackloi-ai-cyber-lab_0.1.0_amd64.deb
+sudo apt install ./hackloi-ai-cyber-lab_0.1.0_amd64.deb
+```
 
-For people deciding whether to install, the project now includes clear visuals directly in the repo:
+## Branding Assets
+
+For launch posts, release previews, and repository presentation, the project also includes the core brand visuals directly in the repo:
 
 <p align="center">
   <img src="branding/logos/logo-primary.png" alt="Hackloi AI Cyber Lab primary logo" width="70%">
@@ -109,7 +131,7 @@ For people deciding whether to install, the project now includes clear visuals d
 
 <p align="center">
   <img src="branding/box-art/product-box.png" alt="Hackloi AI Cyber Lab product art" width="49%">
-  <img src="branding/demo/github-demo.gif" alt="Hackloi AI Cyber Lab animated preview" width="49%">
+  <img src="docs/screenshots/captures/product-tour.gif" alt="Hackloi AI Cyber Lab animated product tour" width="49%">
 </p>
 
 ### Install Desktop Prerequisites

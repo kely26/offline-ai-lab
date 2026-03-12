@@ -1785,6 +1785,10 @@ class AppHandler(BaseHTTPRequestHandler):
         if path == "/styles.css":
             self._serve_path(ROOT_DIR / "styles.css")
             return
+        if path.startswith("/assets/"):
+            relative = Path(path.removeprefix("/assets/"))
+            self._serve_path(ROOT_DIR / "assets" / relative)
+            return
         if path.startswith("/vendor/monaco/"):
             relative = Path(path.removeprefix("/vendor/monaco/"))
             self._serve_path(MONACO_DIR / relative)

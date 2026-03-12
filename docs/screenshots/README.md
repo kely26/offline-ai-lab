@@ -11,6 +11,16 @@ Recommended filenames:
 - `agents-page.png`
 - `model-manager.png`
 
+Current tracked captures:
+
+- [`captures/dashboard-overview.png`](captures/dashboard-overview.png)
+- [`captures/chat-panel.png`](captures/chat-panel.png)
+- [`captures/code-workspace.png`](captures/code-workspace.png)
+- [`captures/scan-analyzer.png`](captures/scan-analyzer.png)
+- [`captures/agents-page.png`](captures/agents-page.png)
+- [`captures/model-manager.png`](captures/model-manager.png)
+- [`captures/product-tour.gif`](captures/product-tour.gif)
+
 ## Clean Capture Setup
 
 Before capturing screenshots:
