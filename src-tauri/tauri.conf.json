@@ -32,6 +32,8 @@
       "deb"
     ],
     "resources": [
+      "../package.json",
+      "../LICENSE",
       "../start-webui.sh",
       "../start-ai.sh",
       "../status.sh",

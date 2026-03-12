@@ -15,6 +15,13 @@
   <img src="https://img.shields.io/badge/AI-Ollama%20Local-black?style=for-the-badge" alt="Ollama Local">
   <img src="https://img.shields.io/badge/Privacy-Local%20First-0b8f6a?style=for-the-badge" alt="Local First">
   <img src="https://img.shields.io/badge/Editor-Monaco-0078d4?style=for-the-badge" alt="Monaco Editor">
+  <img src="https://img.shields.io/github/v/release/kely26/offline-ai-lab?display_name=tag&style=for-the-badge" alt="Latest release">
+</p>
+
+<p align="center">
+  <a href="https://github.com/kely26/offline-ai-lab/releases/latest">Download Latest Release</a> ·
+  <a href="https://github.com/kely26/offline-ai-lab/releases">Release History</a> ·
+  <a href="docs/linkedin-launch-kit.md">Launch Kit</a>
 </p>
 
 <p align="center">
@@ -51,6 +58,12 @@ The product combines:
   <img src="branding/box-art/product-box.png" alt="Hackloi AI Cyber Lab product box art" width="49%">
 </p>
 
+## Demo Preview
+
+<p align="center">
+  <img src="branding/demo/github-demo.gif" alt="Hackloi AI Cyber Lab demo preview" width="100%">
+</p>
+
 ### Core Capabilities
 
 - AI Chat: local chat experience with markdown, code blocks, prompt history, and attachments
@@ -72,6 +85,10 @@ Hackloi AI Cyber Lab is built around local execution:
 - Tool execution requires explicit user confirmation
 
 ## Quick Start
+
+### Download Linux Build
+
+Grab the latest Debian package from the [GitHub Releases page](https://github.com/kely26/offline-ai-lab/releases/latest). The packaged app is aimed at Kali, Debian, Ubuntu, and similar Linux desktops.
 
 ### Install Desktop Prerequisites
 
@@ -138,6 +155,7 @@ Suggested demo flow:
 - [`docs/release-checklist.md`](docs/release-checklist.md): ship checklist
 - [`docs/screenshots/README.md`](docs/screenshots/README.md): clean screenshot capture notes
 - [`docs/linkedin-launch-kit.md`](docs/linkedin-launch-kit.md): launch copy and media order
+- [`LICENSE`](LICENSE): MIT license
 
 ## Repository Structure
 

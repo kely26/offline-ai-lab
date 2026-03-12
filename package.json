@@ -3,6 +3,12 @@
   "private": true,
   "version": "0.1.0",
   "description": "Local AI cybersecurity workstation for chat, code, tooling, and scan analysis",
+  "license": "MIT",
+  "homepage": "https://github.com/kely26/offline-ai-lab",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kely26/offline-ai-lab.git"
+  },
   "scripts": {
     "tauri:dev": "tauri dev",
     "tauri:build": "tauri build"
